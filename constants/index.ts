@@ -1,11 +1,13 @@
 // NAVIGATION
 export const NAV_LINKS = [
   { href: '/', key: 'home', label: 'Home' },
-  { href: '/', key: 'how_FarmCS_work', label: 'How FarmCS Work?' },
-  { href: '/', key: 'services', label: 'Services' },
-  { href: '/', key: 'learn_more ', label: 'Learn More ' },
-  { href: '/', key: 'contact_us', label: 'Contact Us' },
+  { href: '/dashboard', key: 'dashboard', label: 'Dashboard' },
+  { href: '/cropdata', key: 'crop_data', label: 'Crop Data' }, // Fixed href
+  { href: '/learnmore', key: 'learn_more', label: 'Learn More' }, // Fixed key and href
+  { href: '/contact', key: 'contact', label: 'Contact Us' }, // Corrected the href
+  { key: 'signup', label: 'SignUp', href: '/signup' }, // Already correct
 ]
+
 
 // CAMP SECTION
 export const PEOPLE_URL = [
@@ -52,10 +54,10 @@ export const FOOTER_LINKS = [
   {
     title: 'Learn More',
     links: [
-      'About Hilink',
-      'Press Releases',
+      'About FarmCS',
+      'Team',
       'Environment',
-      'Jobs',
+      'Learn ',
       'Privacy Policy',
       'Contact Us',
     ],
@@ -70,7 +72,7 @@ export const FOOTER_CONTACT_INFO = {
   title: 'Contact Us',
   links: [
     { label: 'Admin Officer', value: '123-456-7890' },
-    { label: 'Email Officer', value: 'hilink@akinthil.com' },
+    { label: 'Email Officer', value: 'farmcs@gmail.com' },
   ],
 }
 
