@@ -5,7 +5,7 @@ const VideoSection = () => {
     <div className="lg:h-[80vh] w-screen h-[40vh]">
       <video
         className="w-full h-full object-cover"
-        src="https://jattu8602.github.io/sundown/labour.mp4"
+        src="model/sprinkle.mp4"
         autoPlay
         loop
         muted

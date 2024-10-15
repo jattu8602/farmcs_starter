@@ -1,7 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
 import Button from './Button'
+import Link from 'next/link'
 const Hero = () => {
+
   return (
     <section className=" max-container padding-container flex flex-col gap-20 py-10 md:gap-28 lg:py-20 xl:flex-row    relative  h-[120%] sm:min-h-[80vh]">
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2 ">
@@ -24,7 +26,7 @@ const Hero = () => {
           today.
         </h4>
         <div className="my-11 flex flex-wrap  gap-5">
-          <div className="flex items-center gap-2 ">
+          {/* <div className="flex items-center gap-2 ">
             {Array(5)
               .fill(1)
               .map((_, index) => (
@@ -42,19 +44,24 @@ const Hero = () => {
             <span className="regular-16 lg:regular-20 ml-1 underline">
               Excellent Reviews
             </span>
-          </p>
+          </p> */}
+          <p className="bold-16 lg:bold-20 text-blue-700 ">Coming Soon</p>
         </div>
         <div className="flex flex-col w-full gap-3 sm:flex-row">
           <Button
-            type="button" title="Download App" variant="btn_green"
-            icon=''
-          />
-          <Button
             type="button"
-            title="How we work?"
-            icon="/play.svg"
-            variant="btn_white_text"
+            title="Download App"
+            variant="btn_green"
+            icon=""
           />
+          <Link href="/learnmore">
+            <Button
+              type="button"
+              title="How we work?"
+              icon="/play.svg"
+              variant="btn_white_text"
+            />
+          </Link>
         </div>
       </div>
 
