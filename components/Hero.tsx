@@ -8,10 +8,10 @@ const Hero = () => {
     <section className=" max-container padding-container flex flex-col gap-20 py-10 md:gap-28 lg:py-20 xl:flex-row    relative  h-[120%] sm:min-h-[80vh]">
       <div className="relative z-20 flex flex-1 flex-col xl:w-1/2 ">
         <Image
-          src="/camp.svg"
+          src="/leave.png"
           alt="camp"
-          width={50}
-          height={50}
+          width={70}
+          height={70}
           className="absolute left-[-5px] top-[-30px] w-10 lg:w-[50px] mb-5"
         />
         <h1 className="text-2xl lg:bold-88 font-bold lg:text-10xl lg:w-[50vw]">
