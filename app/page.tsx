@@ -5,6 +5,7 @@ import Guide from '@/components/Guide';
 import Features from '@/components/Features';
 import GetApp from '@/components/GetApp';
 import VideoSection from './../components/VideoSection';
+import Swiper from '@/components/Swiper';
 
 
 
@@ -16,6 +17,7 @@ export default function Home() {
       <Hero />
       <Camp />
       <Guide />
+      {/* <Swiper /> */}
       <Features />
       <GetApp/>
     </>

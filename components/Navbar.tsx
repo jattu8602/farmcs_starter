@@ -1,21 +1,54 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { NAV_LINKS } from './../constants/index'
 import Button from './Button'
-// import Login from '@/app/login/page'
+import { gsap } from 'gsap'
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const menuRef = useRef(null)
+  const menuItemsRef = useRef([])
 
   // Toggle menu visibility
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen)
   }
 
+  useEffect(() => {
+    if (isMenuOpen) {
+      // GSAP animation when menu is opened
+      gsap.to(menuRef.current, {
+        x: 0,
+        duration: 0.5,
+        ease: 'power3.inOut',
+      })
+
+      gsap.fromTo(
+        menuItemsRef.current,
+        { opacity: 0, x: 50 },
+        { opacity: 1, x: 0, stagger: 0.1, delay: 0.2, duration: 0.3 }
+      )
+    } else {
+      // GSAP animation when menu is closed
+      gsap.to(menuRef.current, {
+        x: '100%',
+        duration: 0.5,
+        ease: 'power3.inOut',
+      })
+
+      gsap.to(menuItemsRef.current, {
+        opacity: 0,
+        x: 50,
+        stagger: -0.1,
+        duration: 0.3,
+      })
+    }
+  }, [isMenuOpen])
+
   return (
-    <nav className="flexBetween max-container padding-container relative z-30 py-5">
+    <nav className="flexBetween max-container padding-container relative z-30 md:py-5 py-1">
       <Link href="/">
         <Image src="/logo/transbg.png" alt="logo" width={74} height={29} />
       </Link>
@@ -36,39 +69,45 @@ const Navbar = () => {
           title="Login"
           icon="/user.svg"
           variant="btn_dark_green"
-          // href='/Login'
         />
       </div>
       <Image
-        src="menu.svg"
-        alt="menu"
+        src={isMenuOpen ? 'cross.svg' : 'menu.svg'}
+        alt={isMenuOpen ? 'Close menu' : 'Open menu'}
         width={32}
         height={32}
         className="inline-block cursor-pointer lg:hidden"
         onClick={handleMenuToggle}
       />
-      {/* Mobile Menu - shown when toggled */}
-      {isMenuOpen && (
-        <ul className="absolute top-16 left-0 w-full bg-gray-900 p-5 flex flex-col items-center gap-5 lg:hidden">
-          {NAV_LINKS.map((link) => (
-            <Link
-              href={link.href}
-              key={link.key}
-              className="regular-16 text-white text-center cursor-pointer transition-all hover:font-bold"
-              onClick={handleMenuToggle} // Close menu on click
-            >
-              {link.label}
-            </Link>
-          ))}
+
+      {/* Mobile Menu */}
+      <div
+        ref={menuRef}
+        className="mobile-menu-container absolute top-16 left-0 w-full bg-gray-900 p-5 flex flex-col items-center gap-5 lg:hidden"
+        style={{ transform: 'translateX(100%)' }} // Initial state for GSAP
+      >
+        {NAV_LINKS.map((link, index) => (
+          <Link
+            href={link.href}
+            key={link.key}
+            className="regular-16 text-white text-center cursor-pointer transition-all hover:font-bold"
+            ref={(el) => (menuItemsRef.current[index] = el)} // Store each item in the ref array
+            onClick={handleMenuToggle}
+          >
+            {link.label}
+          </Link>
+        ))}
+        {/* Login Button */}
+        <div ref={(el) => (menuItemsRef.current[NAV_LINKS.length] = el)}>
           <Button
             type="button"
             title="Login"
             icon="/user.svg"
             variant="btn_dark_green"
-
+            className="regular-16 text-white text-center cursor-pointer transition-all hover:font-bold"
           />
-        </ul>
-      )}
+        </div>
+      </div>
     </nav>
   )
 }
