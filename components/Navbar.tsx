@@ -9,7 +9,7 @@ import { gsap } from 'gsap'
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef(null)
-  const menuItemsRef = useRef([])
+ const menuItemsRef = useRef<(HTMLDivElement | HTMLAnchorElement | null)[]>([])
 
   // Toggle menu visibility
   const handleMenuToggle = () => {
@@ -91,14 +91,22 @@ const Navbar = () => {
             href={link.href}
             key={link.key}
             className="regular-16 text-white text-center cursor-pointer transition-all hover:font-bold"
-            ref={(el) => (menuItemsRef.current[index] = el)} // Store each item in the ref array
+            ref={(el) => {
+              if (el && !menuItemsRef.current.includes(el)) {
+                menuItemsRef.current[index] = el // Populate ref dynamically
+              }
+            }}
             onClick={handleMenuToggle}
           >
             {link.label}
           </Link>
         ))}
         {/* Login Button */}
-        <div ref={(el) => (menuItemsRef.current[NAV_LINKS.length] = el)}>
+        <div
+          ref={(el) => {
+            menuItemsRef.current[NAV_LINKS.length] = el // Assign login button ref
+          }}
+        >
           <Button
             type="button"
             title="Login"
@@ -113,3 +121,4 @@ const Navbar = () => {
 }
 
 export default Navbar
+
