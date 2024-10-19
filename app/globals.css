@@ -143,6 +143,11 @@ body {
     @apply absolute top-[13%] z-10 hidden max-w-[1500px] rotate-[15deg] md:-left-16 lg:flex 3xl:left-20;
   }
 
+    .mobile-menu-container {
+      display: flex;
+      flex-direction: column !important;
+    }
+
   /* Get App */
   .get-app {
     @apply max-container relative flex w-full flex-col justify-between gap-32 overflow-hidden bg-green-90 bg-pattern bg-cover bg-center bg-no-repeat px-6 py-12 text-white sm:flex-row sm:gap-12 sm:py-24 lg:px-20 xl:max-h-[598px] 2xl:rounded-5xl;

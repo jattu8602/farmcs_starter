@@ -71,8 +71,8 @@ export const FOOTER_LINKS = [
 export const FOOTER_CONTACT_INFO = {
   title: 'Contact Us',
   links: [
-    { label: 'Admin Officer', value: '123-456-7890' },
-    { label: 'Email Officer', value: 'farmcs@gmail.com' },
+    { label: 'Team Lead', value: '+91  7800342475' },
+    { label: 'Email', value: 'teamfarmcs@gmail.com' },
   ],
 }
 

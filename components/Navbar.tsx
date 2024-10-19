@@ -9,41 +9,47 @@ import { gsap } from 'gsap'
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const menuRef = useRef(null)
- const menuItemsRef = useRef<(HTMLDivElement | HTMLAnchorElement | null)[]>([])
+  const menuItemsRef = useRef<(HTMLDivElement | HTMLAnchorElement | null)[]>([])
 
-  // Toggle menu visibility
   const handleMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen)
+    // Toggle overflow hidden on body when menu is opened/closed
+    document.body.style.overflow = isMenuOpen ? 'auto' : 'hidden'
   }
 
   useEffect(() => {
     if (isMenuOpen) {
-      // GSAP animation when menu is opened
+      gsap.set(menuRef.current, { display: 'flex' })
       gsap.to(menuRef.current, {
         x: 0,
         duration: 0.5,
         ease: 'power3.inOut',
       })
-
       gsap.fromTo(
         menuItemsRef.current,
         { opacity: 0, x: 50 },
         { opacity: 1, x: 0, stagger: 0.1, delay: 0.2, duration: 0.3 }
       )
     } else {
-      // GSAP animation when menu is closed
       gsap.to(menuRef.current, {
         x: '100%',
         duration: 0.5,
         ease: 'power3.inOut',
+        onComplete: () => {
+          gsap.set(menuRef.current, { display: 'none' })
+        },
       })
-
       gsap.to(menuItemsRef.current, {
         opacity: 0,
         x: 50,
         stagger: -0.1,
         duration: 0.3,
       })
+    }
+
+    // Cleanup function to reset body overflow when component unmounts
+    return () => {
+      document.body.style.overflow = 'auto'
     }
   }, [isMenuOpen])
 
@@ -83,17 +89,17 @@ const Navbar = () => {
       {/* Mobile Menu */}
       <div
         ref={menuRef}
-        className="mobile-menu-container absolute top-16 left-0 w-full bg-gray-900 p-5 flex flex-col items-center gap-5 lg:hidden"
-        style={{ transform: 'translateX(100%)' }} // Initial state for GSAP
+        className="mobile-menu-container fixed top-[64px] left-0 right-0 bottom-0 w-full bg-gray-900 flex flex-col items-center gap-5 py-5 lg:hidden overflow-y-auto"
+        style={{ transform: 'translateX(100%)', display: 'none' }}
       >
         {NAV_LINKS.map((link, index) => (
           <Link
             href={link.href}
             key={link.key}
-            className="regular-16 text-white text-center cursor-pointer transition-all hover:font-bold"
+            className="regular-16 text-white text-center cursor-pointer transition-all hover:font-bold w-full py-2"
             ref={(el) => {
               if (el && !menuItemsRef.current.includes(el)) {
-                menuItemsRef.current[index] = el // Populate ref dynamically
+                menuItemsRef.current[index] = el
               }
             }}
             onClick={handleMenuToggle}
@@ -101,11 +107,11 @@ const Navbar = () => {
             {link.label}
           </Link>
         ))}
-        {/* Login Button */}
         <div
           ref={(el) => {
-            menuItemsRef.current[NAV_LINKS.length] = el // Assign login button ref
+            menuItemsRef.current[NAV_LINKS.length] = el
           }}
+          className="w-full flex justify-center mt-4"
         >
           <Button
             type="button"
@@ -121,4 +127,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
