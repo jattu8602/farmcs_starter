@@ -17,7 +17,7 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "FarmCs starter ",
+  title: "FarmCS",
   description: "This is the Starter of the farmCs Project",
 
 };

@@ -52,19 +52,22 @@ export const FEATURES = [
 // FOOTER SECTION
 export const FOOTER_LINKS = [
   {
-    title: 'Learn More',
+    title: 'Links',
     links: [
-      'About FarmCS',
-      'Team',
-      'Environment',
-      'Learn ',
-      'Privacy Policy',
+      'Home',
+      'Dashboard',
+      'Crop Data',
+      'Learn More',
       'Contact Us',
+      'Login',
     ],
   },
   {
-    title: 'Our Community',
-    links: ['Climbing xixixi', 'Hiking hilink', 'Hilink kinthill'],
+    title: 'Our Team',
+    images:[],
+    names: ['', '', ''],
+    links:[],
+
   },
 ]
 
