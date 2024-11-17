@@ -254,7 +254,7 @@ const SmartAgricultureSystem = () => {
 
           {/* Features Tab Content */}
           {activeTab === 'features' && (
-            <div className="mt-6 bg-white rounded-lg shadow-md p-6 h-[500px]">
+            <div className="mt-6 bg-white rounded-lg shadow-md p-2 md:p-6 md:h-[500px] ">
               <h2 className="text-2xl font-bold mb-6">
                 Features and Innovations
               </h2>
