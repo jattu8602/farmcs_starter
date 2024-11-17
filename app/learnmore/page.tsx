@@ -1,9 +1,10 @@
-export default function LearnPage() {
+import Intro from '@/components/Intro'
+import Swiper from '@/components/Swiper'
+export default function LearnMore() {
   return (
     <>
-      <div>
-        <h1>Learn</h1>
-      </div>
+      <Intro />
+      <Swiper/>
     </>
   )
 }

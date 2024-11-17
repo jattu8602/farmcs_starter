@@ -166,3 +166,71 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Slider Container Styling */
+.slider-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; /* Full viewport height */
+  overflow: hidden;
+}
+
+/* Slider Styling (Slider will move horizontally) */
+.slider {
+  display: flex;
+  transition: transform 1s ease-in-out;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+/* Individual Slide Styling */
+.slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 90%;
+  opacity: 0; /* Initially set opacity to 0 */
+  transition: opacity 1s ease-in-out;
+}
+
+/* Active Slide Styling */
+.slide.active {
+  opacity: 1; /* Only active slide will be visible */
+}
+
+/* Mobile Responsiveness */
+@media screen and (max-width: 768px) {
+  .slider-container {
+    height: 70vh; /* Adjust height for mobile */
+  }
+  .slide{
+    height: 50%;
+  }
+}
+
