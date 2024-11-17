@@ -17,7 +17,7 @@ const ImageSlider = () => {
   }, [])
 
   return (
-    <div className="slider-container mt-4">
+    <div className="slider-container mt-4  ">
       <div className="slider  ">
         {images.map((src, index) => (
           <div

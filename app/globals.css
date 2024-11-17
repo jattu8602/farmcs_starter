@@ -227,10 +227,10 @@ body {
 /* Mobile Responsiveness */
 @media screen and (max-width: 768px) {
   .slider-container {
-    height: 70vh; /* Adjust height for mobile */
+    height: 35vh; /* Adjust height for mobile */
   }
   .slide{
-    height: 50%;
+    height: 100%;
   }
 }
 
