@@ -17,7 +17,8 @@ export default function LearnMore() {
         className='md:mt-[-100px] mt-3 ' />
       <Art/>
 
-      <Tech/>
+      <Tech />
+      <div className='pb-5 h-2'></div>
     </>
   )
 }

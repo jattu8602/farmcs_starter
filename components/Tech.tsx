@@ -205,7 +205,7 @@ const SmartAgricultureSystem = () => {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto space-y-8 p-4">
+    <div className="w-full max-w-6xl mx-auto space-y-8 p-4 border-b-2 border-slate-200 pb-8">
       {/* Custom Tabs */}
       <div className="w-full">
         <div className="grid grid-cols-3 gap-2 bg-gray-100 p-1 rounded-lg">
